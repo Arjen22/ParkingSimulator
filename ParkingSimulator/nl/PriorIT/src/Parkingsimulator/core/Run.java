@@ -17,10 +17,5 @@ public class Run {
 		
 	}
     
-    public static String getModel()
-    {
-        return testmodel1;
-    }
-    
 
 }
