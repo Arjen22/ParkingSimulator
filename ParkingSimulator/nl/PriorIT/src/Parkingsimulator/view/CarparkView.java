@@ -25,8 +25,8 @@ public class CarparkView extends GeneralView {
     private Location laatsteplek;
     private int hoeveelheid;
     
-    public CarparkView(TestModel SimulatorModel) {
-	super(SimulatorModel);
+    public CarparkView(TestModel testmodel1) {
+	super(testmodel1);
 	setSize(200, 200);
 }
     

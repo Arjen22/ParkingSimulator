@@ -20,7 +20,7 @@ public class TestModel extends GeneralModel implements Runnable {
 	private int numberOfRows;
 	private int numberOfPlaces;
 	private int numberOfOpenSpots;
-	// private static int floornumber = 0; NOT BEING USED
+	// private static int floornumber = 0; 
 	private Car[][][] cars;
 	private int abonnementsPlaatsen;
 	private Location laatsteplekAbbo;
