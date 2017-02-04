@@ -38,8 +38,8 @@ public class TestModel extends GeneralModel implements Runnable {
     		this.numberOfPlaces = numberOfPlaces;
     	    this.numberOfOpenSpots =numberOfFloors*numberOfRows*numberOfPlaces;
     	    hoeveelheidPlaatsen = abonnementsPlaatsen;
-    	    carparkview = new CarparkView(testmodel1);
-    		/*carparkview = new CarparkView(null);
+    	    carparkview = new CarparkView(this);
+    		/* carparkview = new CarparkView(); /*
     	    cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
     	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	    Container contentPane = getContentPane();

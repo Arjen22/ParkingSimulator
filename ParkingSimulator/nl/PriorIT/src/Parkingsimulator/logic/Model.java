@@ -183,7 +183,7 @@ public class Model extends GeneralModel implements Runnable {
 	    		cpview.getNumberOfOpenSpots()> 0 && 
 	    			i<enterSpeed) {
 	            Car car = queue.removeCar();
-	            Location freeLocation = cpview.getFirstFreeLocation(car.getHasToPay());
+	            Location freeLocation = cpview.getFirstFreeLocation(car.getHasToPay(),car.getReservation());
 	            cpview.setCarAt(freeLocation, car);
 	            i++;
 	        }

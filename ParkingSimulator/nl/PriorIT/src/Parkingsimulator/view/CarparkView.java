@@ -172,7 +172,7 @@ public Car removeCarAt(Location location) {
     return car;
 }
 
-public Location getFirstFreeLocation(boolean paying) {
+/* public Location getFirstFreeLocation(boolean paying) {
 	
     for (int floor = 0; floor < getNumberOfFloors(); floor++) {
         for (int row = 0; row < getNumberOfRows(); row++) {
@@ -199,7 +199,7 @@ public Location getFirstFreeLocation(boolean paying) {
     }
     return null;
 }
-
+*/
 public Car getFirstLeavingCar() {
     for (int floor = 0; floor < getNumberOfFloors(); floor++) {
         for (int row = 0; row < getNumberOfRows(); row++) {
@@ -227,7 +227,67 @@ private boolean locationIsValid(Location location) {
     return true;
 }
 
+//}
+ 
+public Location getFirstFreeLocation(boolean paying, boolean reservation) {
+	
+    for (int floor = 0; floor < getNumberOfFloors(); floor++) {
+        for (int row = 0; row < getNumberOfRows(); row++) {
+            for (int place = 0; place < getNumberOfPlaces(); place++) {
+            	int pay = (paying) ? 1 : 0;
+            	int res = (reservation) ? 1 : 0;
+            	switch(pay) { //betalen: normal car and reservation
+            	case 1: //pay==true, reservation and normal car.
+            		switch(res) {
+            		case 1: /*if (reservation ==true) & paying==true*/ { //reservation car
+            			if(floor <= laatsteplek.getFloor()) { floor = laatsteplek.getFloor();
+                			if(row <= laatsteplek.getRow()) { row = laatsteplek.getRow() + 2;
+                				if(place<= laatsteplek.getPlace()) { place = laatsteplek.getPlace() + 1;
+                				}//place
+                				}//row
+            			}//floor
+            		}//einde case 1 res
+            		case 0: /* if (reservation ==false) & paying==true */{ //normal car
+            			if(floor <= laatsteplek.getFloor()) { floor = laatsteplek.getFloor();
+                			if(row <= laatsteplek.getRow()) { row = laatsteplek.getRow();
+                				if(place<= laatsteplek.getPlace()) { place = laatsteplek.getPlace() + 1;
+                				}//place
+                				}//row
+            			}//floor
+            		}//einde case 0 res
+            		}//einde switch res
+            	case 0: /* if (paying==false) */{ //abonnementshouders
+        			if(floor <= laatsteplek.getFloor()) { floor = laatsteplek.getFloor();
+            			if(row <= laatsteplek.getRow()) { row = laatsteplek.getRow();
+            				if(place<= laatsteplek.getPlace()) { place = laatsteplek.getPlace() + 1;
+            				}//place
+            				}//row
+        			}//floor	
+            	}//einde switch pay
+            	
+            /*	if (paying == true) {
+            		if(floor <= laatsteplek.getFloor()) {
+            			floor = laatsteplek.getFloor();
+            			if(row <= laatsteplek.getRow()) {
+            				row = laatsteplek.getRow();
+            				if(place<= laatsteplek.getPlace()) {
+            					place = laatsteplek.getPlace() + 1;
+            				}                				            				
+            			}                				
+            		}
+            	}
+            	*/
+                Location location = new Location(floor, row, place);
+                Location check = getCarAt(location) == null ? location : null;
+                if(check != null) {
+                	return location;
+                }
+            }
+        }
+    }
+    }
+    return null;
+} 
 }
-
 
 
